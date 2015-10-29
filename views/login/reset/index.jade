@@ -1,7 +1,7 @@
 extends ../../../layouts/default
 
 block head
-  title Reset Your Password
+  title Tilbakestill passordet
 
 block feet
   script(src='/views/login/reset/index.min.js?#{cacheBreaker}')
@@ -10,7 +10,7 @@ block body
   div.row
     div.col-sm-6
       div.page-header
-        h1 Reset Your Password
+        h1 Tilbakestill passordet
       div#reset
 
   script(type='text/template', id='tmpl-reset')
@@ -24,26 +24,26 @@ block body
         |<% if (success) { %>
         div.alert.alert-info.alert-dismissable
           button.close(type='button', data-dismiss='alert') &times;
-          | Your password has been reset. Please login to confirm.
+          | Passordet ditt er tilbakestilt. Logg på igjen.
         |<% } %>
         |<% if (id == undefined) { %>
         div.alert.alert-warning.alert-dismissable
           button.close(type='button', data-dismiss='alert') &times;
-          | You do not have a valid reset request.
+          | Du har ingen gyldig forespørsel.
         |<% } %>
       |<% if (!success && id != undefined) { %>
       div.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
-        label New Password:
+        label Nytt passord:
         input.form-control(type='password', name='password', value!='<%= password %>')
         span.help-block <%- errfor.password %>
       div.form-group(class!='<%- errfor.confirm ? "has-error" : "" %>')
-        label Confirm Password:
+        label Bekreft passord:
         input.form-control(type='password', name='confirm', value!='<%= confirm %>')
         span.help-block <%- errfor.confirm %>
       |<% } %>
       div.form-group
         |<% if (!success && id != undefined) { %>
-        button.btn.btn-primary.btn-reset(type='button') Set Password
+        button.btn.btn-primary.btn-reset(type='button') Lagre nytt passord
         |<% } %>
         |&nbsp;
-        a.btn.btn-link(href='/login/') Back to Login
+        a.btn.btn-link(href='/login/') Tilbake til pålogging
